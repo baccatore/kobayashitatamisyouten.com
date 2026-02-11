@@ -12,12 +12,12 @@
 
 ## コンテキスト管理方針
 
-このプロジェクトのドキュメントは、ルートフォルダの `README.md` と `CLAUDE.md` を除き、 `.claude/` フォルダで管理する
+このレポジトリにおけるドキュメント（コンテキスト管理）は、ルートフォルダの `README.md` と `CLAUDE.md` を除き、 `.claude/` フォルダで管理する
 
 - `.claude/about-store.md` - 小林畳商店に関する情報
 - `.claude/operations.md` - 運用手順（デプロイ・テスト・Lint・メンテナンス）
 - `.claude/requirements.md` - 要件定義（機能要件・非機能要件・デザイン要件）
-- `.claude/structure.md` - プロジェクトフォルダ構成
+- `.claude/structure.md` - フォルダ構成
 - `.claude/technologies.md` - 技術スタック詳細（フロント/バックエンド/インフラ/CI/AI）
 
 ---
