@@ -16,6 +16,7 @@
 
 - `.claude/about-store.md` - 小林畳商店に関する情報
 - `.claude/operations.md` - 運用手順（デプロイ・テスト・Lint・メンテナンス）
+- `.claude/reference.md` - 参考リンク
 - `.claude/requirements.md` - 要件定義（機能要件・非機能要件・デザイン要件）
 - `.claude/structure.md` - フォルダ構成
 - `.claude/technologies.md` - 技術構成（採用技術と実装方針）
