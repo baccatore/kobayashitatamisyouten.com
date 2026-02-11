@@ -15,6 +15,7 @@
 このレポジトリにおけるドキュメント（コンテキスト管理）は、ルートフォルダの `README.md` と `CLAUDE.md` を除き、 `.claude/` フォルダで管理する
 
 - `.claude/about-store.md` - 小林畳商店に関する情報
+- `.claude/conding-standards.md` - コーディング規約
 - `.claude/operations.md` - 運用手順（デプロイ・テスト・Lint・メンテナンス）
 - `.claude/reference.md` - 参考リンク
 - `.claude/requirements.md` - 要件定義（機能要件・非機能要件・デザイン要件）
