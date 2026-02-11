@@ -1,0 +1,17 @@
+{
+  "name": "kobayashitatamisyouten",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app",
+    "api"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=app & npm run dev --workspace=api",
+    "dev:app": "npm run dev --workspace=app",
+    "dev:api": "npm run dev --workspace=api",
+    "build": "npm run build --workspace=app",
+    "deploy:api": "npm run deploy --workspace=api"
+  }
+}
