@@ -18,17 +18,17 @@
 - `.claude/operations.md` - 運用手順（デプロイ・テスト・Lint・メンテナンス）
 - `.claude/requirements.md` - 要件定義（機能要件・非機能要件・デザイン要件）
 - `.claude/structure.md` - フォルダ構成
-- `.claude/technologies.md` - 技術スタック詳細（フロント/バックエンド/インフラ/CI/AI）
+- `.claude/technologies.md` - 技術構成（採用技術と実装方針）
 
 ---
 
 ## アーキテクチャと技術スタック（概要）
 
-Cloudflare上の静的サイトに、問い合わせフォーム処理のみWorkerを使用する構成とする
+Cloudflare上の静的サイトに、問い合わせフォーム処理のみWorkerを使用する構成。
 
-**フロントエンド**: HTML5 / CSS3 / バニラJavaScript
+**フロントエンド**: Astro
+**バックエンド**: TypeScript + Hono（Cloudflare Workers）
 **インフラ**: Cloudflare Pages（CDN + 自動デプロイ）
-**バックエンド**: Cloudflare Workers（お問い合わせフォームのみ）
 **バージョン管理**: Git + GitHub
 **分析**: Google Analytics 4 / Search Console
 
