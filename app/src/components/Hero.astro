@@ -1,0 +1,122 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  image?: string;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { title, subtitle, image, ctaText, ctaLink } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__background">
+    {image && <img src={image} alt="" class="hero__image" loading="eager" />}
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero__content">
+      <h1 class="hero__title">{title}</h1>
+      {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+
+      {ctaText && ctaLink && (
+        <div class="hero__cta">
+          <a href={ctaLink} class="btn btn--primary btn--large">
+            {ctaText}
+          </a>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    overflow: hidden;
+  }
+
+  .hero__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(139, 148, 116, 0.90) 0%,
+      rgba(163, 175, 133, 0.85) 100%
+    );
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-xl) 0;
+  }
+
+  .hero__title {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    line-height: var(--line-height-heading);
+  }
+
+  .hero__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.7;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__cta {
+    margin-top: var(--spacing-xl);
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      min-height: 400px;
+    }
+
+    .hero__title {
+      font-size: var(--font-size-4xl);
+    }
+
+    .hero__subtitle {
+      font-size: var(--font-size-xl);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      min-height: 500px;
+    }
+  }
+</style>

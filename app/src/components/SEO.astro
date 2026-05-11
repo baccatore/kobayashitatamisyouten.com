@@ -1,0 +1,58 @@
+---
+import type { PageMeta } from '../types';
+
+interface Props extends PageMeta {
+  schema?: object;
+  lang?: 'ja' | 'en';
+}
+
+const { title, description, ogImage, noindex = false, schema, lang = 'ja' } = Astro.props;
+
+const siteName = '小林畳商店';
+const siteUrl = 'https://kobayashitatamisyouten.com';
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
+const pathname = Astro.url.pathname;
+const canonicalUrl = new URL(pathname, siteUrl).href;
+const imageUrl = ogImage ? new URL(ogImage, siteUrl).href : `${siteUrl}/images/ogp.jpg`;
+
+// hreflang URLs
+const jaUrl = lang === 'en' ? new URL(pathname.replace(/^\/en/, ''), siteUrl).href : canonicalUrl;
+const enUrl = lang === 'en' ? canonicalUrl : new URL(`/en${pathname}`, siteUrl).href;
+---
+
+<!-- 基本メタタグ -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- hreflang（多言語対応） -->
+<link rel="alternate" hreflang="ja" href={jaUrl} />
+<link rel="alternate" hreflang="en" href={enUrl} />
+<link rel="alternate" hreflang="x-default" href={jaUrl} />
+
+<!-- noindex設定 -->
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- OGP（Open Graph Protocol） -->
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="ja_JP" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- ファビコン -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- 構造化データ -->
+{schema && (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+)}

@@ -1,0 +1,113 @@
+---
+import type { Work } from '../types';
+
+interface Props extends Work {}
+
+const { title, category, images, description, date } = Astro.props;
+const mainImage = images[0] || '/images/placeholder.jpg';
+---
+
+<article class="work-card">
+  <div class="work-card__image-wrapper">
+    <img src={mainImage} alt={title} class="work-card__image" loading="lazy" />
+    {category && (
+      <span class="work-card__category">{category}</span>
+    )}
+  </div>
+
+  <div class="work-card__content">
+    <h3 class="work-card__title">{title}</h3>
+
+    {date && (
+      <p class="work-card__date">
+        <time datetime={date}>{date}</time>
+      </p>
+    )}
+
+    <p class="work-card__description">{description}</p>
+
+    {images.length > 1 && (
+      <p class="work-card__image-count">
+        📷 {images.length}枚の写真
+      </p>
+    )}
+  </div>
+</article>
+
+<style>
+  .work-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-base);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .work-card__image-wrapper {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: var(--color-background-light);
+    position: relative;
+  }
+
+  .work-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .work-card__category {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--primary-600);
+  }
+
+  .work-card__content {
+    padding: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .work-card__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .work-card__date {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .work-card__description {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+  }
+
+  .work-card__image-count {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: 0;
+  }
+</style>

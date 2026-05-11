@@ -1,0 +1,153 @@
+---
+import type { PageMeta, LocalBusinessSchema } from '../types';
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props extends PageMeta {}
+
+const { title, description, ogImage, noindex = false } = Astro.props;
+
+// LocalBusiness構造化データ
+const localBusinessSchema: LocalBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: '小林畳商店',
+  image: 'https://kobayashitatamisyouten.com/images/logo.jpg',
+  '@id': 'https://kobayashitatamisyouten.com',
+  url: 'https://kobayashitatamisyouten.com',
+  telephone: '+81-6-6451-4927',
+  priceRange: '¥¥',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '福島8丁目14-16',
+    addressLocality: '大阪市福島区',
+    addressRegion: '大阪府',
+    postalCode: '553-0003',
+    addressCountry: 'JP'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 34.6964,
+    longitude: 135.4864
+  },
+  areaServed: [
+    {
+      '@type': 'City',
+      name: '大阪市'
+    },
+    {
+      '@type': 'City',
+      name: '福島区'
+    }
+  ],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
+    ],
+    opens: '08:00',
+    closes: '18:00'
+  },
+  serviceType: [
+    '畳工事',
+    '襖工事',
+    '内装工事',
+    'リフォーム'
+  ],
+  sameAs: []
+};
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      noindex={noindex}
+      schema={localBusinessSchema}
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title.includes('小林畳商店') ? title : `${title} | 小林畳商店`}</title>
+  </head>
+  <body>
+    <Header />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- ページトップへ戻るボタン -->
+    <a href="#main-content" class="back-to-top" aria-label="ページトップへ戻る">
+      ↑
+    </a>
+
+    <style>
+      .back-to-top {
+        position: fixed;
+        bottom: var(--spacing-lg);
+        right: var(--spacing-lg);
+        width: 50px;
+        height: 50px;
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border: 1px solid var(--primary-600);
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--font-size-2xl);
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--transition-base);
+        z-index: var(--z-fixed);
+      }
+
+      .back-to-top:hover {
+        background-color: var(--primary-600);
+        border-color: var(--primary-700);
+        text-decoration: none;
+      }
+
+      .back-to-top.is-visible {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+
+    <script>
+      // ページトップへ戻るボタンの表示制御
+      const backToTopButton = document.querySelector<HTMLAnchorElement>('.back-to-top');
+
+      if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 300) {
+            backToTopButton.classList.add('is-visible');
+          } else {
+            backToTopButton.classList.remove('is-visible');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import type { BreadcrumbItem } from '../../types';
+
+const pageMeta = {
+  title: '畳替えのタイミング',
+  description: '畳替えに適した時期や、季節・家庭内の行事に合わせた畳替えの例をご紹介。小林畳商店では、お客様のタイミングに合わせて柔軟に対応いたします。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '畳について', href: '/knowledge' },
+  { label: '畳替えのタイミング', href: '/knowledge/timing' }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} subtitle="畳替えは特に決まった時季はなく、雨の日以外は1年中適しています" />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- 店主の想い -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">店主の想い</h2>
+      <div class="content-box">
+        <p>
+          私のこだわりとして特に気を遣わさせて頂いていることは、お客様に『気持ちよくご注文をして頂く！』この一点です。
+        </p>
+        <p>
+          畳屋として、職人として、商品にはこだわりを持って扱っておりますが、これらはプロとして当たり前のことだと私は思っております。
+        </p>
+        <p>
+          畳と言うものは日本文化の代表とされるものとして、みなさまの身近にあるものですが頻繁に購入するものでもなく、多くのお客様がマイホームをご購入され築10年以上たって初めて表替えという状況で畳を選ぶというケースがほとんどです。
+        </p>
+        <p>
+          「初めて畳を変えるんですが・・・表替えでいいんですか？」<br />
+          「築10年たつんですが、いま入っている畳は使えますか？」
+        </p>
+        <p>
+          など、初めての購入とのこともあって不安な気持ち一杯で皆さま御来店されます。
+          多くのお客様の不安なお言葉を聞いているうちに、『ただ畳を作り、ただ畳を収める、だけでは足りないのでないか！』と強く心に思うようになりました。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 畳替えの時期 -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">畳替えの時期</h2>
+      <div class="content-box">
+        <p>
+          畳替えは特に決まった時季はなく、雨の日以外は1年中適していると言えます。畳が傷んできたら畳を替えられる事が多いのですが、季節や家庭内の行事（冠婚葬祭）にあわせて畳替えをされる方もたくさんいらっしゃいます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 季節による畳替えの例 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">季節による畳替えの例</h2>
+
+      <div class="season-grid">
+        <div class="season-card">
+          <h3 class="season-card__title">春</h3>
+          <p class="season-card__events">
+            入学・卒業・転勤等での引っ越し、ひな祭り、春のお彼岸、子供の日
+          </p>
+          <p class="season-card__description">
+            年度の変わり目は、畳替えで気持ちも新たに！また4月29日は畳の日です。
+          </p>
+        </div>
+
+        <div class="season-card">
+          <h3 class="season-card__title">夏</h3>
+          <p class="season-card__events">
+            お盆（初盆等）の人寄せ、お盆、夏休み
+          </p>
+          <p class="season-card__description">
+            梅雨明けからお盆までは畳替えの最盛期です！
+          </p>
+        </div>
+
+        <div class="season-card">
+          <h3 class="season-card__title">秋</h3>
+          <p class="season-card__events">
+            新年に向けての大掃除、敬老の日、秋のお彼岸、七五三
+          </p>
+          <p class="season-card__description">
+            新年に向けての準備が始まります。新しい畳で新年を！また9月24日は畳の日です。
+          </p>
+        </div>
+
+        <div class="season-card">
+          <h3 class="season-card__title">冬</h3>
+          <p class="season-card__events">
+            お部屋を乾燥させたい、正月、成人式
+          </p>
+          <p class="season-card__description">
+            何といっても一番の乾燥シーズン！畳替えには最適です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 家庭内の行事による畳替えの例 -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">家庭内の行事（冠婚葬祭）による畳替えの例</h2>
+
+      <div class="event-list">
+        <div class="event-item">
+          <h3 class="event-item__title">結婚・結納</h3>
+          <p>
+            ご両家のご挨拶の時はもちろん、様々な来客の機会も増えます。お祝い、記念も兼ねて皆様畳替えをされます。
+          </p>
+        </div>
+
+        <div class="event-item">
+          <h3 class="event-item__title">出産</h3>
+          <p>
+            妊婦さんがお産でしばらく実家に帰られる時など、部屋の片づけも兼ねて。出産祝い・記念に替えられる方も多く見受けられます。また、赤ちゃんがはいはいや歩く事を考えて、フローリングに畳を敷かれる方も多いです。
+          </p>
+        </div>
+
+        <div class="event-item">
+          <h3 class="event-item__title">葬儀・法事</h3>
+          <p>
+            故人をしのび、畳替えをされる方が多いです。また、法事も最近ではご自宅でしない場合もありますが、御仏壇の前には必ず一度は皆さんお参りをされます。約1ヵ月前から準備をされる方が多いです。
+          </p>
+        </div>
+
+        <div class="event-item">
+          <h3 class="event-item__title">お祭り</h3>
+          <p>
+            地元祭礼は新しい畳に替えて仕事は休む…古い習慣ですが大切にしたいものです。
+          </p>
+        </div>
+
+        <div class="event-item">
+          <h3 class="event-item__title">入園・卒園、入学・卒業、就職・退職、成人・還暦</h3>
+          <p>
+            昔の元服から始まり、人生の節目にお祝いを兼ねて新しい畳で門出を祝います。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA title="畳替えのご相談はお気軽に" description="お客様のご都合に合わせて、柔軟に対応いたします。まずはお気軽にご相談ください。" />
+</BaseLayout>
+
+<style>
+  .content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .content-box p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .season-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .season-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .season-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .season-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .season-card__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
+
+  .season-card__events {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .season-card__description {
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .event-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .event-item {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .event-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .event-item__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .event-item p {
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>

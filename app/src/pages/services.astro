@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import type { BreadcrumbItem } from '../types';
+
+const pageMeta = {
+  title: '業務内容',
+  description: '小林畳商店の業務内容。畳工事（新畳・表替・裏返）、襖工事、内装工事・リフォームなど、永年の豊富な経験と確かな技術で地域の皆様のニーズにお応えいたします。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '業務内容', href: '/services' }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero
+    title={pageMeta.title}
+    subtitle="永年の豊富な経験と信頼、確かな技術で地域の皆様の多様なニーズにお応えいたします。畳のことなら親切・丁寧・安心の当店にお任せください！"
+  />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- 畳工事 -->
+  <section class="section" id="tatami">
+    <div class="container">
+      <h2 class="section__title">畳工事</h2>
+      <p class="section__subtitle">
+        新畳、畳表替、畳裏返、乾燥。ふちなし畳など、豊富にご用意しております。
+      </p>
+
+      <div class="service-content">
+        <div class="service-description">
+          <p>
+            こだわりの職人が、一枚一枚丁寧に畳を仕上げています。お客さまのご予算に合わせて、最適な畳をご案内します。サンプルも豊富にご用意しておりますので、お気軽にご相談ください。
+          </p>
+
+          <h3 class="service-subtitle">畳工事の種類</h3>
+          <ul class="service-list">
+            <li><strong>新畳</strong>: 畳床から新しく製作します</li>
+            <li><strong>表替</strong>: 畳表を新しいものに張り替えます</li>
+            <li><strong>裏返</strong>: 畳表を裏返して使用します（2〜5年が目安）</li>
+            <li><strong>乾燥</strong>: 湿気を取り除きます</li>
+            <li><strong>縁なし畳</strong>: モダンな雰囲気の縁なし畳も対応可能</li>
+          </ul>
+
+          <h3 class="service-subtitle">国産イグサへのこだわり</h3>
+          <p>
+            当店では「最高級京たたみ」はもちろん、一般畳でも中級以上の畳には、全て国産イグサを使用します。国産のイグサは一般的に高品質なものがほとんどで、イグサ本来の弾力性・耐久性を保持し、見た目にも変色やムラのない畳表ができます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 襖工事 -->
+  <section class="section section--gray" id="fusuma">
+    <div class="container">
+      <h2 class="section__title">襖工事</h2>
+      <p class="section__subtitle">
+        新襖、襖張替、障子張替
+      </p>
+
+      <div class="service-content">
+        <div class="service-description">
+          <p>
+            伝統的な和の空間を美しく保ちます。襖や障子の張替えで、お部屋の印象を一新できます。
+          </p>
+
+          <h3 class="service-subtitle">襖工事の種類</h3>
+          <ul class="service-list">
+            <li><strong>新襖</strong>: 襖を新しく製作します</li>
+            <li><strong>襖張替</strong>: 襖紙を新しいものに張り替えます</li>
+            <li><strong>障子張替</strong>: 障子紙を新しいものに張り替えます</li>
+          </ul>
+
+          <p>
+            伝統的な和柄から、モダンなデザインまで、豊富な種類の襖紙・障子紙をご用意しております。お部屋の雰囲気に合わせてお選びいただけます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 内装工事・リフォーム -->
+  <section class="section" id="interior">
+    <div class="container">
+      <h2 class="section__title">内装工事・リフォーム、クロス張替え</h2>
+      <p class="section__subtitle">
+        内装が変わるとお部屋の印象が、がらりと変わります
+      </p>
+
+      <div class="service-content">
+        <div class="service-description">
+          <p>
+            畳だけでなく、お部屋全体の内装リフォームも承っております。クロス張替えや、簡単な大工仕事まで対応可能です。
+          </p>
+
+          <h3 class="service-subtitle">対応可能な工事</h3>
+          <ul class="service-list">
+            <li><strong>クロス張替え</strong>: 壁紙を新しいものに張り替えます</li>
+            <li><strong>内装リフォーム</strong>: お部屋全体のリフォームにも対応</li>
+            <li><strong>簡単な大工仕事</strong>: 畳の納品や内装工事の際にお申し付けください</li>
+          </ul>
+
+          <p>
+            ライフスタイルに合わせたご提案もさせていただきます。お気軽にご相談ください！
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .service-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .service-description {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .service-subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .service-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .service-list li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+  }
+
+  .service-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+  }
+
+  .service-description p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+</style>

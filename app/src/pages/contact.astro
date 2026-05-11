@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import type { BreadcrumbItem } from '../types';
+
+const pageMeta = {
+  title: 'お問い合わせ',
+  description: '小林畳商店へのお問い合わせはこちらから。畳や内装工事・リフォーム、クロス張替えのことなら、何でもお気軽にご相談ください。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: 'お問い合わせ', href: '/contact' }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} subtitle="畳や内装工事・リフォーム、クロス張替えのことなら、何でもお気軽にご相談ください" />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- お問い合わせ方法 -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-methods">
+        <!-- 電話 -->
+        <div class="contact-method">
+          <h2 class="contact-method__title">お電話でのお問い合わせ</h2>
+          <p class="contact-method__description">
+            お急ぎの方は、お電話でお気軽にご連絡ください。
+          </p>
+          <a href="tel:06-6451-4927" class="contact-tel">
+            <span class="contact-tel__icon">📞</span>
+            <span class="contact-tel__number">06-6451-4927</span>
+          </a>
+          <p class="contact-method__hours">
+            営業時間: 8:00〜18:00<br />
+            定休日: 不定休（日曜・祝日も対応）
+          </p>
+        </div>
+
+        <!-- メールフォーム -->
+        <div class="contact-method">
+          <h2 class="contact-method__title">メールでのお問い合わせ</h2>
+          <p class="contact-method__description">
+            下記のフォームからお問い合わせください。2営業日以内にご返信いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせフォーム -->
+  <section class="section section--gray">
+    <div class="container">
+      <form class="contact-form" method="POST" action="/api/contact">
+        <div class="form-group">
+          <label for="name" class="form-label">お名前<span class="form-required">必須</span></label>
+          <input type="text" id="name" name="name" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">メールアドレス<span class="form-required">必須</span></label>
+          <input type="email" id="email" name="email" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="form-label">電話番号<span class="form-required">必須</span></label>
+          <input type="tel" id="phone" name="phone" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+          <label for="service" class="form-label">希望するサービス</label>
+          <select id="service" name="service" class="form-select">
+            <option value="">選択してください</option>
+            <option value="tatami">畳工事</option>
+            <option value="fusuma">襖工事</option>
+            <option value="interior">内装工事・リフォーム</option>
+            <option value="other">その他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="form-label">お問い合わせ内容<span class="form-required">必須</span></label>
+          <textarea id="message" name="message" class="form-textarea" rows="8" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-checkbox-label">
+            <input type="checkbox" name="privacy" class="form-checkbox" required />
+            <a href="#privacy-policy" class="form-link">プライバシーポリシー</a>に同意する
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--large">
+            送信する
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- プライバシーポリシー -->
+  <section class="section" id="privacy-policy">
+    <div class="container">
+      <h2 class="section__title">プライバシーポリシー</h2>
+
+      <div class="privacy-content">
+        <h3 class="privacy-subtitle">個人情報の取り扱い</h3>
+        <p>
+          当店の問い合せ等サービスに関する個人情報の取り扱いについて、以下の通り、ご通知申し上げます。ご同意の上で、問い合せ等頂きますようお願い申し上げます。
+        </p>
+
+        <h3 class="privacy-subtitle">1. 個人情報の利用</h3>
+        <p>当店はお客様の個人情報を本サービスに際して以下の目的で保有し利用いたします。</p>
+        <p><strong>個人情報</strong>: お名前、住所、TEL、メールアドレス</p>
+        <p><strong>利用目的</strong>:</p>
+        <ul>
+          <li>当店からサービス利用者からの問い合せ等対応のためのデータとして使用</li>
+          <li>当店から電話・郵送・メール・SMS等による商品の販売・勧奨用等のために使用</li>
+        </ul>
+
+        <h3 class="privacy-subtitle">2. 個人情報の第三者提供・委託</h3>
+        <p>当店は保有している個人情報は前項の利用目的のみ利用し、いかなる第三者にも提供しません。</p>
+        <p>当店は取得した個人情報の取扱いの全部又は一部を、必要な保護措置を講じたうえ、上記利用目的に必要な範囲において、業務委託先等の第三者に委託することがあります。これらの第三者は、日本国外にある者が含まれる場合があります。</p>
+
+        <h3 class="privacy-subtitle">3. 個人情報の開示・削除・訂正等の請求</h3>
+        <p>お客様は当店に対して自己に関する個人情報を開示するよう請求することができます。又、当店の保有するお客様の個人情報に誤りや変更があった場合は訂正、追加、削除等を請求することができます。</p>
+
+        <h3 class="privacy-subtitle">4. 記入項目の任意性について</h3>
+        <p>必須項目以外の項目の記入は任意です。</p>
+
+        <h3 class="privacy-subtitle">5. お問い合せ窓口</h3>
+        <p>
+          会社名: 小林畳商店<br />
+          住所: 〒553-0003　大阪府大阪市福島区福島8丁目8-20<br />
+          TEL: 06-6451-4927
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-methods {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .contact-methods {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .contact-method {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+  }
+
+  .contact-method__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-method__description {
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-tel {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .contact-tel:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+  }
+
+  .contact-tel__icon {
+    font-size: var(--font-size-3xl);
+  }
+
+  .contact-method__hours {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* フォーム */
+  .contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .form-label {
+    display: block;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+  }
+
+  .form-required {
+    color: #e74c3c;
+    font-size: var(--font-size-sm);
+    margin-left: var(--spacing-xs);
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-md);
+    font-family: var(--font-family-base);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-base);
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 150px;
+  }
+
+  .form-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-md);
+  }
+
+  .form-checkbox {
+    width: 18px;
+    height: 18px;
+  }
+
+  .form-link {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .form-actions {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+  }
+
+  /* プライバシーポリシー */
+  .privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .privacy-subtitle {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .privacy-subtitle:first-child {
+    margin-top: 0;
+  }
+
+  .privacy-content p,
+  .privacy-content ul {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .privacy-content ul {
+    padding-left: var(--spacing-lg);
+  }
+</style>

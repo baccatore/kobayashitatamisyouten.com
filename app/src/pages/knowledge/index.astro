@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import type { BreadcrumbItem } from '../../types';
+
+const pageMeta = {
+  title: '畳について',
+  description: '畳の構造、畳床の種類、畳の種類について解説。小林畳商店では、お客様の用途・住環境に適した畳をご提供いたします。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '畳について', href: '/knowledge' }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} subtitle="お客様の用途・住環境に適した畳をご提供いたします" />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- イントロダクション -->
+  <section class="section">
+    <div class="container">
+      <div class="content-box">
+        <p class="intro-text">
+          普段の生活の中で、畳の中身を意識することはあまり無いでしょう。
+          しかし、その構造と各部に使われている素材には、快適に暮らす様々な知恵が生かされています。
+          畳の構造を知ることは、お客様の用途・住環境に適した畳を選ぶ際の、重要なポイントになります。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 畳の構造 -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">畳の構造</h2>
+      <div class="content-box">
+        <p>
+          畳は畳床・畳表・畳縁と至ってシンプルな構造でできています。畳は、幾重にも重ねた稲藁を締め付け、圧縮して作られた「畳床」に、経糸に天然のイグサを編みこんで織られた「畳表」を上からかぶせ、長辺に「畳縁」を縫い付けることで作られています。
+        </p>
+        <p>
+          現在では、科学技術の進歩や、住宅事情やニーズの変化に伴い、様々な素材が使われるようになりました。しかし、畳自体の基本的な構造や製法に関しては、大昔から変わりありません。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 畳床 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">畳床（たたみどこ）</h2>
+      <div class="content-box">
+        <p>
+          畳床は、もともと稲藁を何重にも重ねてできた天然素材100%の「藁床」を使用しておりましたが、近年では住宅事情の変化や、藁自体の生産が少なくなったこともあり、藁床に変わり木材チップの圧縮板で発泡スチロールをはさんだ軽い建材畳床が普及しております。
+        </p>
+
+        <h3 class="content-subtitle">藁サンド（スタイロ床）</h3>
+        <p>
+          藁と藁の間に、ポリスチレンフォームを挟んで作られた床で、藁床に近い感触を持ちつつ、藁床より軽量です。
+          藁床にも言えることですが、藁の質や縫い目の細かさなどの作業工程などにより、床の等級が変わってきます。
+        </p>
+
+        <h3 class="content-subtitle">建材床（化学床）</h3>
+        <p>
+          細かな木材を圧縮したインシュレンボードと、ポリスチレンフォームを使った床で、フォームをボードで挟んだものや、ボードのみのものもあります。
+        </p>
+        <p>
+          特徴としては、安価で軽量、断熱性や耐湿性にも優れており、ダニも寄生しにくい面も評価できます。
+          しかし、藁床に比べると足あたりが硬く、また、フォーム入りのものはやや耐久性に難があるといえます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 畳の種類 -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">畳の種類</h2>
+
+      <div class="tatami-types">
+        <div class="tatami-type">
+          <h3 class="tatami-type__title">縁付き畳</h3>
+          <p>
+            もっとも一般的な、畳床・畳表・畳縁からなる畳です。畳縁（たたみべり）が畳表の端を保護しているので、畳の端や角が傷みにくい畳です。一般のお部屋から、神社仏閣の畳まで、幅広く使われています。
+          </p>
+        </div>
+
+        <div class="tatami-type">
+          <h3 class="tatami-type__title">縁なし畳</h3>
+          <p>
+            琉球畳・琉球風畳などの縁がない畳です。近年では、色づけした畳表を使いカラフルな部屋を演出したり、薄畳をフローリングに敷き詰め洋間の中に和の空間を作ったり、そのニーズは増えてきています。
+            但し、相応の技術と手間を要求されるため、大量生産向きではないので、一般の縁付き畳より高価な場合が多いです。
+          </p>
+        </div>
+
+        <div class="tatami-type">
+          <h3 class="tatami-type__title">床の間（龍鬢表）</h3>
+          <p>
+            床の間に敷く畳です。本来は龍鬢表（りゅうびんおもて）という特殊な畳表を使用しますが、最近では通常の畳表を使用したものや、畳表に畳縁を付けただけの薄縁が多く使われております。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 関連ページへのリンク -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">もっと詳しく知る</h2>
+
+      <div class="related-links">
+        <a href="/knowledge/selection" class="related-card">
+          <h3 class="related-card__title">畳を選ぶポイント</h3>
+          <p class="related-card__description">
+            国産イグサと中国産イグサの違い、お部屋に合わせた畳の選び方について解説します。
+          </p>
+          <span class="related-card__arrow">→</span>
+        </a>
+
+        <a href="/knowledge/timing" class="related-card">
+          <h3 class="related-card__title">畳替えのタイミング</h3>
+          <p class="related-card__description">
+            畳替えに適した時期や、季節・行事に合わせた畳替えの例をご紹介します。
+          </p>
+          <span class="related-card__arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  .intro-text {
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    text-align: center;
+    color: var(--color-text);
+  }
+
+  .content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .content-box p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .content-subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .tatami-types {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .tatami-types {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .tatami-type {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .tatami-type__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tatami-type p {
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .related-links {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .related-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .related-card {
+    display: block;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    position: relative;
+  }
+
+  .related-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    text-decoration: none;
+  }
+
+  .related-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .related-card__description {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .related-card__arrow {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+  }
+</style>

@@ -1,0 +1,214 @@
+---
+// フッター情報
+const companyInfo = {
+  name: '小林畳商店',
+  address: '〒553-0003 大阪府大阪市福島区福島8丁目14-16',
+  tel: '06-6451-4927',
+  hours: '8:00〜18:00',
+  holidays: '不定休（日曜・祝日も対応）'
+};
+
+const currentYear = new Date().getFullYear();
+
+const footerLinks = [
+  { label: 'ホーム', href: '/' },
+  { label: '業務内容', href: '/services' },
+  { label: '畳について', href: '/knowledge' },
+  { label: '施工例', href: '/works' },
+  { label: '会社概要・アクセス', href: '/about' },
+  { label: 'お問い合わせ', href: '/contact' }
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__content">
+      <!-- 会社情報 -->
+      <div class="footer__section">
+        <h3 class="footer__title">{companyInfo.name}</h3>
+        <address class="footer__address">
+          <p class="footer__address-text">{companyInfo.address}</p>
+          <p class="footer__tel">
+            <a href={`tel:${companyInfo.tel.replace(/-/g, '')}`} class="footer__tel-link">
+              TEL: {companyInfo.tel}
+            </a>
+          </p>
+          <p class="footer__hours">営業時間: {companyInfo.hours}</p>
+          <p class="footer__holidays">{companyInfo.holidays}</p>
+        </address>
+      </div>
+
+      <!-- ナビゲーション -->
+      <div class="footer__section">
+        <h3 class="footer__title">サイトマップ</h3>
+        <nav class="footer__nav" aria-label="フッターナビゲーション">
+          <ul class="footer__nav-list">
+            {footerLinks.map((link) => (
+              <li class="footer__nav-item">
+                <a href={link.href} class="footer__nav-link">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
+      <!-- お問い合わせCTA -->
+      <div class="footer__section">
+        <h3 class="footer__title">お問い合わせ</h3>
+        <p class="footer__cta-text">
+          畳のことならお気軽に<br />ご相談ください
+        </p>
+        <div class="footer__cta-buttons">
+          <a href="tel:06-6451-4927" class="btn btn--primary">
+            📞 電話する
+          </a>
+          <a href="/contact" class="btn btn--outline">
+            メールで問い合わせ
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- コピーライト -->
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        © {currentYear} {companyInfo.name}. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: var(--spacing-2xl) 0 var(--spacing-md);
+  }
+
+  .footer__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer__section {
+    /* セクションごとの余白 */
+  }
+
+  .footer__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  /* 会社情報 */
+  .footer__address {
+    font-style: normal;
+  }
+
+  .footer__address-text,
+  .footer__hours,
+  .footer__holidays {
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.7;
+  }
+
+  .footer__tel {
+    margin: var(--spacing-md) 0;
+  }
+
+  .footer__tel-link {
+    color: var(--color-white);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .footer__tel-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* ナビゲーション */
+  .footer__nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .footer__nav-link {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  .footer__nav-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  /* お問い合わせCTA */
+  .footer__cta-text {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.7;
+  }
+
+  .footer__cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer__cta-buttons .btn {
+    text-align: center;
+  }
+
+  /* コピーライト */
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: var(--spacing-md);
+    text-align: center;
+  }
+
+  .footer__copyright {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* タブレット以上 */
+  @media (min-width: 768px) {
+    .footer__content {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer__nav-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer__cta-buttons {
+      flex-direction: row;
+    }
+  }
+
+  /* デスクトップ以上 */
+  @media (min-width: 1024px) {
+    .footer__content {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer__nav-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
