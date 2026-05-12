@@ -1,17 +1,209 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import WorkCard from '../components/WorkCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import type { Service, Work } from '../types';
 
+// ページメタ情報
+const pageMeta = {
+  title: '小林畳商店 | 大阪市福島区の畳職人',
+  description: '大阪市福島区の小林畳商店では、畳職人が一枚一枚丁寧に畳を仕上げます。お見積から仕上げ、納品まで一人の者が一貫して行いますので安心してお任せください。畳以外にも内装・クロスのリフォームも承ります。'
+};
+
+// サービス一覧
+const services: Service[] = [
+  {
+    title: '畳工事',
+    description: '新畳、畳表替、畳裏返、乾燥。ふちなし畳など、豊富にご用意しております。お客さまのご予算に合わせて、最適な畳をご案内します。',
+    link: '/services#tatami'
+  },
+  {
+    title: '襖工事',
+    description: '新襖、襖張替、障子張替。伝統的な和の空間を美しく保ちます。',
+    link: '/services#fusuma'
+  },
+  {
+    title: '内装工事・リフォーム',
+    description: '内装が変わるとお部屋の印象が、がらりと変わります。ライフスタイルに合わせたご提案もさせていただきます。',
+    link: '/services#interior'
+  }
+];
+
+// 施工例（サンプル）
+const works: Work[] = [
+  {
+    title: '和室の畳表替え',
+    category: '畳工事',
+    images: ['/images/works/work1.jpg'],
+    description: '国産イグサを使用した畳表替えを行いました。新しい畳の香りで、お部屋が生まれ変わりました。',
+    date: '2026-01-15'
+  },
+  {
+    title: '縁なし畳の新調',
+    category: '畳工事',
+    images: ['/images/works/work2.jpg'],
+    description: 'モダンな縁なし畳を新調。洋室との調和も考えたデザインです。',
+    date: '2026-01-10'
+  },
+  {
+    title: '襖と障子の張替え',
+    category: '襖工事',
+    images: ['/images/works/work3.jpg'],
+    description: '伝統的な和柄の襖紙と、明るい障子紙で和室を明るく演出しました。',
+    date: '2025-12-20'
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <!-- Hero Section -->
+  <Hero
+    title="大阪市福島区の畳職人が丁寧に仕上げます"
+    subtitle="お見積から仕上げ、納品まで一人の者が一貫して行いますので安心してお任せください。畳以外にも内装・クロスのリフォームも承ります。"
+    ctaText="お問い合わせ"
+    ctaLink="/contact"
+  />
+
+  <!-- 特長・アピールポイント -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">小林畳商店の特長</h2>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon">💰</div>
+          <h3 class="feature__title">ご予算に合わせた提案</h3>
+          <p class="feature__description">
+            お客さまのご予算に合わせて、最適な畳をご案内します。サンプルも豊富にご用意しておりますので、お気軽にご相談ください。
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon">🏠</div>
+          <h3 class="feature__title">畳以外もお任せ</h3>
+          <p class="feature__description">
+            畳以外にも、内装・クロス張替え・リフォームを承っております。お部屋全体のリフォームもご相談ください。
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon">👨‍🔧</div>
+          <h3 class="feature__title">一貫対応で安心</h3>
+          <p class="feature__description">
+            お見積りから施工・納品まで一人の者が一貫して対応致しますので、安心なだけでなく余計な中間マージンもかかりません。
+          </p>
+        </div>
+
+        <div class="feature">
+          <div class="feature__icon">✨</div>
+          <h3 class="feature__title">柔軟な対応</h3>
+          <p class="feature__description">
+            お客さまのご要望にお応えできるよう、柔軟な対応を心がけております。畳のことなら親切・丁寧・安心の当店にお任せください！
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- サービス一覧 -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">業務内容</h2>
+      <p class="section__subtitle">
+        小林畳商店は、永年の豊富な経験と信頼、確かな技術で<br />
+        地域の皆様の多様なニーズにお応えいたします
+      </p>
+
+      <div class="grid grid--3">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+
+      <div class="text-center mt-xl">
+        <a href="/services" class="btn btn--primary btn--large">
+          業務内容の詳細を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 施工例 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">施工例</h2>
+      <p class="section__subtitle">
+        これまでの施工事例をご紹介します
+      </p>
+
+      <div class="grid grid--3">
+        {works.map((work) => (
+          <WorkCard {...work} />
+        ))}
+      </div>
+
+      <div class="text-center mt-xl">
+        <a href="/works" class="btn btn--outline btn--large">
+          施工例をもっと見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせCTA -->
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  /* 特長セクション */
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .feature {
+    background: var(--bg-white);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    transition: border-color var(--transition-base);
+  }
+
+  .feature:hover {
+    border-color: var(--border-strong);
+  }
+
+  .feature__icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .feature__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .feature__description {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin: 0;
+    font-size: var(--font-size-md);
+  }
+
+  @media (min-width: 768px) {
+    .features {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .features {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>

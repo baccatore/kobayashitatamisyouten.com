@@ -1,0 +1,116 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'お気軽にお問い合わせください',
+  description = '畳や内装工事に関するご相談は、お電話またはメールフォームからお気軽にどうぞ。'
+} = Astro.props;
+---
+
+<section class="contact-cta">
+  <div class="container">
+    <div class="contact-cta__content">
+      <h2 class="contact-cta__title">{title}</h2>
+      <p class="contact-cta__description">{description}</p>
+
+      <div class="contact-cta__buttons">
+        <a href="tel:06-6451-4927" class="contact-cta__tel">
+          <span class="contact-cta__tel-icon">📞</span>
+          <span class="contact-cta__tel-number">06-6451-4927</span>
+        </a>
+
+        <a href="/contact" class="btn btn--primary btn--large">
+          メールで問い合わせ
+        </a>
+      </div>
+
+      <p class="contact-cta__hours">
+        営業時間: 8:00〜18:00（日曜・祝日も対応）
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-cta {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+    );
+    color: var(--color-white);
+    padding: var(--spacing-2xl) 0;
+  }
+
+  .contact-cta__content {
+    text-align: center;
+  }
+
+  .contact-cta__title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .contact-cta__description {
+    font-size: var(--font-size-lg);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-cta__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-cta__tel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-xl);
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--neutral-200);
+    transition: border-color var(--transition-base);
+  }
+
+  .contact-cta__tel:hover {
+    border-color: var(--primary-500);
+    text-decoration: none;
+  }
+
+  .contact-cta__tel-icon {
+    font-size: var(--font-size-3xl);
+  }
+
+  .contact-cta__hours {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    .contact-cta__title {
+      font-size: var(--font-size-3xl);
+    }
+
+    .contact-cta__buttons {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+</style>

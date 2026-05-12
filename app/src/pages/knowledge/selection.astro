@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import type { BreadcrumbItem } from '../../types';
+
+const pageMeta = {
+  title: '畳を選ぶポイント',
+  description: '国産イグサと中国産イグサの違い、お部屋に合わせた畳の選び方を解説。小林畳商店では、確かな目利きで等級付けされた国産イグサを使用します。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '畳について', href: '/knowledge' },
+  { label: '畳を選ぶポイント', href: '/knowledge/selection' }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} subtitle="品質で選ぶか、価格で選ぶか。お客様の用途に合わせてご提案します" />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- 国産イグサ -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">国産イグサ — 品質で選ぶなら一押し</h2>
+      <div class="content-box">
+        <p>
+          国産のイグサは一般的に高品質なものがほとんどで、イグサ本来の弾力性耐久性を保持し、見た目にも変色やムラのない畳表ができます。価格が安い中国産に比べ長く使っていただけるので、結果的に経済的な場合もあります。
+          普及品から特選品まで、幅広い用途に対応します。
+        </p>
+        <p>
+          国産イグサといっても、種類、品質は様々ですが、当店では安定した品質のものを、信頼できる産地より直接仕入れ、確かな目利きで等級付けされたイグサを畳表にしています。当店では「最高級京たたみ」はもちろん、一般畳でも中級以上の畳には、全て国産イグサを使用します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 中国産イグサ -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">中国産イグサ — 価格が魅力</h2>
+      <div class="content-box">
+        <p>
+          安いことから、急速に普及しました。中国産イグサの畳表は価格が安いことから、近年、集合住宅や賃貸物件などのほとんどで使用されています。
+        </p>
+
+        <h3 class="content-subtitle">国産イグサとの比較（中国産の注意点）</h3>
+        <ul class="comparison-list">
+          <li>国産に比べ約1ヶ月早く、未成熟のまま収穫されるため、表面がモロく折れやすい。また、イグサの中身の密度を重視しない傾向が強く、踏むたびに大きく変形するため、耐久性に難があります。</li>
+          <li>輸出の際の虫、カビ対策として、短時間に強く乾燥させるため、乾燥のしすぎで表面が傷み、全体の弾力性が失われます。</li>
+          <li>等級による選別が均一でなく、品質、色味などにムラが多い。また、色を統一させるために色加工をすることが多く、自然の風合いが損なわれるばかりか、結果的に剥げて衣服に着いたり、日焼けなどが目立つケースが多く見受けられます。</li>
+        </ul>
+
+        <h3 class="content-subtitle">中国産をお勧めする用途</h3>
+        <ul class="recommend-list">
+          <li>賃貸物件、アパートなど、一定期間で畳表を入れ替える住宅に。</li>
+          <li>子ども部屋など、畳表に激しく負担のかかる部屋などに。</li>
+          <li>中国産でも上級ランクのものは、コストパフォーマンスが期待できるので、居間や寝室など、幅広い用途でご利用していただけます。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 小林畳商店のこだわり -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">小林畳商店のこだわり</h2>
+      <div class="content-box">
+        <p>
+          全品『丈夫さ』を重視しています。価格によって丈夫さの違いはありますが、基本的には見栄えの良し悪しで価格の差が出ていると思ってください。
+        </p>
+        <p>
+          「い草」は、数年ねかせる（熟成）と丈夫さが増してきます。新草だと青くて綺麗には見えますが、赤ちゃんの肌のように柔いので、丈夫さに難があります。そこで、小林畳商店では、い草の質がよく、熟成された丈夫で削れにくい国産い草畳おもてを主に、取り扱っております。
+        </p>
+        <p>
+          高級品から、丈夫さを重視した『リーズナブル』な商品も多数取り揃えております。
+          親切で丁寧な接客を心がけています。お見積もりや畳に関するご相談、当社におまかせ！！
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA title="畳選びでお悩みの方へ" description="お客様のご予算と用途に合わせて、最適な畳をご提案いたします。サンプルも豊富にご用意しております。" />
+</BaseLayout>
+
+<style>
+  .content-box {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .content-box p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .content-subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .comparison-list,
+  .recommend-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+  }
+
+  .comparison-list li,
+  .recommend-list li {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background-color: var(--color-background-light);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    line-height: 1.7;
+  }
+</style>

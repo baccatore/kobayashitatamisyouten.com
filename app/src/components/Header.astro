@@ -1,0 +1,222 @@
+---
+import Navigation from './Navigation.astro';
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header__inner">
+      <!-- ロゴ -->
+      <div class="header__logo">
+        <a href="/" class="header__logo-link" aria-label="小林畳商店 ホームページ">
+          <span class="header__logo-text">小林畳商店</span>
+        </a>
+      </div>
+
+      <!-- 電話番号（デスクトップ） -->
+      <div class="header__contact">
+        <a href="tel:06-6451-4927" class="header__tel">
+          <span class="header__tel-icon">📞</span>
+          <span class="header__tel-number">06-6451-4927</span>
+        </a>
+        <p class="header__hours">営業時間: 8:00〜18:00</p>
+      </div>
+
+      <!-- ハンバーガーメニューボタン（モバイル） -->
+      <button
+        type="button"
+        class="header__menu-button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span class="header__menu-icon"></span>
+        <span class="header__menu-icon"></span>
+        <span class="header__menu-icon"></span>
+      </button>
+
+      <!-- ナビゲーション -->
+      <div class="header__nav" id="main-navigation">
+        <Navigation />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--border-base);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+    position: relative;
+  }
+
+  /* ロゴ */
+  .header__logo-link {
+    text-decoration: none;
+  }
+
+  .header__logo-text {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  /* 電話番号 */
+  .header__contact {
+    display: none;
+  }
+
+  .header__tel {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+  }
+
+  .header__tel:hover {
+    text-decoration: none;
+    color: var(--color-secondary);
+  }
+
+  .header__tel-icon {
+    font-size: var(--font-size-2xl);
+  }
+
+  .header__hours {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    margin: var(--spacing-xs) 0 0 0;
+  }
+
+  /* ハンバーガーメニューボタン */
+  .header__menu-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: var(--z-fixed);
+  }
+
+  .header__menu-icon {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+  }
+
+  .header__menu-button[aria-expanded="true"] .header__menu-icon:nth-child(1) {
+    transform: translateY(10.5px) rotate(45deg);
+  }
+
+  .header__menu-button[aria-expanded="true"] .header__menu-icon:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__menu-button[aria-expanded="true"] .header__menu-icon:nth-child(3) {
+    transform: translateY(-10.5px) rotate(-45deg);
+  }
+
+  /* ナビゲーション（モバイル） */
+  .header__nav {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--color-white);
+    overflow-y: auto;
+    z-index: var(--z-fixed);
+    border-top: 1px solid var(--border-base);
+  }
+
+  .header__nav.is-open {
+    display: block;
+  }
+
+  /* タブレット以上 */
+  @media (min-width: 768px) {
+    .header__contact {
+      display: block;
+    }
+
+    .header__logo-text {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  /* デスクトップ以上 */
+  @media (min-width: 1024px) {
+    .header__menu-button {
+      display: none;
+    }
+
+    .header__nav {
+      display: block;
+      position: static;
+      background-color: transparent;
+      border-top: none;
+      overflow-y: visible;
+    }
+
+    .header__inner {
+      justify-content: space-between;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>
+
+<script>
+  // メニュー開閉機能
+  const menuButton = document.querySelector<HTMLButtonElement>('.header__menu-button');
+  const nav = document.querySelector<HTMLElement>('.header__nav');
+
+  if (menuButton && nav) {
+    menuButton.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('is-open');
+      menuButton.setAttribute('aria-expanded', isOpen.toString());
+      menuButton.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+
+      // スクロール制御
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // ESCキーで閉じる
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'メニューを開く');
+        document.body.style.overflow = '';
+      }
+    });
+
+    // リンククリックで閉じる（モバイル）
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).tagName === 'A') {
+        nav.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'メニューを開く');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+</script>

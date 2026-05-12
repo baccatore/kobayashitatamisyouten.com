@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import type { BreadcrumbItem } from '../types';
+
+// ページメタ情報
+const pageMeta = {
+  title: '会社概要・アクセス',
+  description: '小林畳商店の会社概要、代表者プロフィール、アクセス情報。大阪市福島区で畳工事、襖工事、内装リフォームを行っています。'
+};
+
+// パンくずリスト
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '会社概要・アクセス', href: '/about' }
+];
+
+// 会社情報
+const companyInfo = {
+  name: '小林畳商店',
+  representative: '小林 克聡',
+  qualifications: '一級畳技能士、品質管理責任者',
+  office: '〒553-0003 大阪府大阪市福島区福島8丁目14-16',
+  workshop: '〒532-0028 大阪府大阪市淀川区十三元今里1-8-17',
+  tel: '06-6451-4927',
+  business: '装飾業、畳店、内装工事、リフォーム',
+  affiliation: '大阪畳商工業協同組合加盟店',
+  hours: '8:00〜18:00（顧客都合に合わせて対応）',
+  holidays: '不定休（日曜・祝日も対応）',
+  parking: 'なし',
+  access: 'JR大阪環状線・福島駅から西へ徒歩5分'
+};
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- 会社概要 -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">会社概要</h2>
+
+      <div class="company-info">
+        <dl class="info-list">
+          <div class="info-item">
+            <dt class="info-item__label">社名</dt>
+            <dd class="info-item__value">{companyInfo.name}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">代表</dt>
+            <dd class="info-item__value">{companyInfo.representative}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">資格</dt>
+            <dd class="info-item__value">{companyInfo.qualifications}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">事業所住所</dt>
+            <dd class="info-item__value">{companyInfo.office}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">作業所住所</dt>
+            <dd class="info-item__value">{companyInfo.workshop}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">TEL</dt>
+            <dd class="info-item__value">
+              <a href={`tel:${companyInfo.tel.replace(/-/g, '')}`} class="tel-link">
+                {companyInfo.tel}
+              </a>
+            </dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">業種</dt>
+            <dd class="info-item__value">{companyInfo.business}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">加盟組合</dt>
+            <dd class="info-item__value">{companyInfo.affiliation}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">営業時間</dt>
+            <dd class="info-item__value">{companyInfo.hours}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">定休日</dt>
+            <dd class="info-item__value">{companyInfo.holidays}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">駐車場</dt>
+            <dd class="info-item__value">{companyInfo.parking}</dd>
+          </div>
+
+          <div class="info-item">
+            <dt class="info-item__label">アクセス</dt>
+            <dd class="info-item__value">{companyInfo.access}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 代表者プロフィール -->
+  <section class="section section--gray">
+    <div class="container">
+      <h2 class="section__title">代表者プロフィール</h2>
+
+      <div class="profile">
+        <div class="profile__content">
+          <h3 class="profile__name">{companyInfo.representative}</h3>
+          <p class="profile__title">代表 / 一級畳技能士</p>
+
+          <div class="profile__text">
+            <p>
+              私のこだわりとして特に気を遣わさせて頂いていることは、お客様に『気持ちよくご注文をして頂く！』この一点です。
+            </p>
+            <p>
+              畳屋として、職人として、商品にはこだわりを持って扱っておりますが、これらはプロとして当たり前のことだと私は思っております。
+            </p>
+            <p>
+              畳と言うものは日本文化の代表とされるものとして、みなさまの身近にあるものですが頻繁に購入するものでもなく、多くのお客様がマイホームをご購入され築10年以上たって初めて表替えという状況で畳を選ぶというケースがほとんどです。
+            </p>
+            <p>
+              「初めて畳を変えるんですが・・・表替えでいいんですか？」<br />
+              「築10年たつんですが、いま入っている畳は使えますか？」
+            </p>
+            <p>
+              など、初めての購入とのこともあって不安な気持ち一杯で皆さま御来店されます。
+              多くのお客様の不安なお言葉を聞いているうちに、『ただ畳を作り、ただ畳を収める、だけでは足りないのでないか！』と強く心に思うようになりました。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section__title">アクセス</h2>
+
+      <div class="access">
+        <div class="access__info">
+          <h3 class="access__subtitle">事業所</h3>
+          <p class="access__address">{companyInfo.office}</p>
+          <p class="access__text">{companyInfo.access}</p>
+
+          <div class="access__buttons">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyInfo.office)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn--primary"
+            >
+              📍 Google Mapsで見る
+            </a>
+          </div>
+        </div>
+
+        <div class="access__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.3!2d135.4864!3d34.6964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDQxJzQ3LjAiTiAxMzXCsDI5JzExLjAiRQ!5e0!3m2!1sja!2sjp!4v1234567890"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="小林畳商店の地図"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせCTA -->
+  <ContactCTA />
+</BaseLayout>
+
+<style>
+  /* 会社情報 */
+  .company-info {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .info-list {
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .info-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+  }
+
+  .info-item__label {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+  }
+
+  .info-item__value {
+    margin: 0;
+  }
+
+  .tel-link {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+  }
+
+  .tel-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .info-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-sm);
+    }
+  }
+
+  /* プロフィール */
+  .profile {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-xl);
+  }
+
+  .profile__name {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .profile__title {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .profile__text p {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+  }
+
+  /* アクセス */
+  .access {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+  }
+
+  .access__subtitle {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .access__address {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .access__text {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .access__buttons {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .access__map {
+    width: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .access__map iframe {
+    width: 100%;
+    height: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    .access {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .access__map iframe {
+      height: 500px;
+    }
+  }
+</style>

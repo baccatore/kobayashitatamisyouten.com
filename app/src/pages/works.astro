@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import WorkCard from '../components/WorkCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import type { BreadcrumbItem, Work } from '../types';
+
+const pageMeta = {
+  title: '施工例',
+  description: '小林畳商店のこれまでの施工事例をご紹介します。畳工事、襖工事、内装工事など、様々な施工例をご覧いただけます。'
+};
+
+const breadcrumbs: BreadcrumbItem[] = [
+  { label: '施工例', href: '/works' }
+];
+
+// 施工例データ（サンプル）
+const works: Work[] = [
+  {
+    title: '和室の畳表替え（6畳）',
+    category: '畳工事',
+    images: ['/images/works/work1.jpg', '/images/works/work1-2.jpg'],
+    description: '国産イグサを使用した畳表替えを行いました。新しい畳の香りで、お部屋が生まれ変わりました。縁は伝統的な和柄を選ばれました。',
+    date: '2026-01-15'
+  },
+  {
+    title: '縁なし畳の新調（リビング）',
+    category: '畳工事',
+    images: ['/images/works/work2.jpg'],
+    description: 'モダンな縁なし畳を新調。洋室との調和も考えたデザインです。カラー畳で明るい空間を演出しました。',
+    date: '2026-01-10'
+  },
+  {
+    title: '襖と障子の張替え',
+    category: '襖工事',
+    images: ['/images/works/work3.jpg', '/images/works/work3-2.jpg'],
+    description: '伝統的な和柄の襖紙と、明るい障子紙で和室を明るく演出しました。',
+    date: '2025-12-20'
+  },
+  {
+    title: '畳新調とクロス張替え',
+    category: '内装工事',
+    images: ['/images/works/work4.jpg'],
+    description: 'お部屋全体のリフォーム。畳の新調に合わせて、壁紙も一新しました。',
+    date: '2025-12-15'
+  },
+  {
+    title: '琉球畳の施工例',
+    category: '畳工事',
+    images: ['/images/works/work5.jpg'],
+    description: '市松模様が美しい琉球畳。フローリングの一部に畳コーナーを設けました。',
+    date: '2025-12-01'
+  },
+  {
+    title: '床の間の畳新調',
+    category: '畳工事',
+    images: ['/images/works/work6.jpg'],
+    description: '床の間用の特別な畳表を使用。伝統的な和の空間を大切に仕上げました。',
+    date: '2025-11-20'
+  }
+];
+---
+
+<BaseLayout title={pageMeta.title} description={pageMeta.description}>
+  <Hero title={pageMeta.title} subtitle="これまでの施工事例をご紹介します" />
+
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- 施工例一覧 -->
+  <section class="section">
+    <div class="container">
+      <p class="intro-text">
+        小林畳商店がこれまでに手がけた施工事例の一部をご紹介します。<br />
+        お客様のご要望に合わせて、様々な畳工事、襖工事、内装工事を承っております。
+      </p>
+
+      <div class="grid grid--3">
+        {works.map((work) => (
+          <WorkCard {...work} />
+        ))}
+      </div>
+
+      <div class="note-box">
+        <p class="note-text">
+          ※ 掲載している施工例は一部です。その他にも多数の施工実績がございます。<br />
+          ※ 画像は準備中です。実際の施工例は店頭でサンプルをご覧いただけます。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ContactCTA title="施工例について詳しく知りたい方へ" description="実際の施工例やサンプルを店頭でご覧いただけます。お気軽にお問い合わせください。" />
+</BaseLayout>
+
+<style>
+  .intro-text {
+    text-align: center;
+    font-size: var(--font-size-lg);
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  .note-box {
+    max-width: 800px;
+    margin: var(--spacing-2xl) auto 0;
+    padding: var(--spacing-lg);
+    background-color: var(--color-background-light);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+  }
+
+  .note-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin: 0;
+  }
+</style>

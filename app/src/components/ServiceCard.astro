@@ -1,0 +1,91 @@
+---
+import type { Service } from '../types';
+
+interface Props extends Service {}
+
+const { title, description, image, link } = Astro.props;
+---
+
+<article class="service-card">
+  {image && (
+    <div class="service-card__image-wrapper">
+      <img src={image} alt={title} class="service-card__image" loading="lazy" />
+    </div>
+  )}
+
+  <div class="service-card__content">
+    <h3 class="service-card__title">{title}</h3>
+    <p class="service-card__description">{description}</p>
+
+    {link && (
+      <a href={link} class="service-card__link">
+        詳しく見る →
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  .service-card {
+    background-color: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-base);
+    overflow: hidden;
+    transition: border-color var(--transition-base);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .service-card__image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: var(--color-background-light);
+  }
+
+  .service-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .service-card__content {
+    padding: var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card__title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .service-card__description {
+    color: var(--color-text);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+  }
+
+  .service-card__link {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: color var(--transition-base);
+    align-self: flex-start;
+  }
+
+  .service-card__link:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,157 @@
+/* ===================================
+   CSS変数定義（禅デザイン原則）
+   =================================== */
+
+:root {
+  /* ===================================
+     カラーパレット - Primary（畳グリーン）
+     =================================== */
+  --primary-50: #f4f5f0;
+  --primary-100: #e8ebe0;
+  --primary-200: #d1d7c2;
+  --primary-300: #bac3a3;
+  --primary-400: #a3af85;
+  --primary-500: #8b9474;  /* メイン: 畳グリーン */
+  --primary-600: #6d7558;
+  --primary-700: #5a5e48;
+  --primary-800: #464838;
+  --primary-900: #33322a;
+
+  /* ===================================
+     カラーパレット - Neutral（墨・和紙）
+     =================================== */
+  --neutral-50: #fafaf9;   /* 和紙 */
+  --neutral-100: #f5f5f4;
+  --neutral-200: #e7e7e5;  /* 薄墨 */
+  --neutral-300: #d4d4d2;
+  --neutral-400: #a3a3a0;
+  --neutral-500: #73736f;  /* 墨 */
+  --neutral-600: #53534f;
+  --neutral-700: #3f3f3c;
+  --neutral-800: #2b2b29;
+  --neutral-900: #1a1a19;  /* 濃墨 */
+
+  /* ===================================
+     カラーパレット - Accent（藍色）
+     =================================== */
+  --accent-50: #f0f4f8;
+  --accent-100: #d9e5f0;
+  --accent-200: #b3cbe0;
+  --accent-300: #8dafd1;
+  --accent-400: #6794c1;
+  --accent-500: #4a7ba7;  /* 藍 */
+  --accent-600: #3d6689;
+  --accent-700: #2f4f6b;
+  --accent-800: #22394e;
+  --accent-900: #152230;
+
+  /* ===================================
+     背景色
+     =================================== */
+  --bg-white: #ffffff;
+  --bg-subtle: var(--neutral-50);  /* 微妙な背景色 */
+  --bg-muted: var(--neutral-100);  /* 交互背景 */
+
+  /* ===================================
+     テキスト色
+     =================================== */
+  --text-primary: var(--neutral-900);
+  --text-secondary: var(--neutral-600);
+  --text-tertiary: var(--neutral-500);
+
+  /* ===================================
+     ボーダー色（階層表現用）
+     =================================== */
+  --border-light: var(--neutral-200);   /* 薄い境界線 */
+  --border-base: var(--neutral-300);    /* 基本境界線 */
+  --border-strong: var(--neutral-400);  /* 強調境界線 */
+
+  /* ===================================
+     セマンティックカラー
+     =================================== */
+  --success: #6b8e4e;  /* 成功: 深緑 */
+  --warning: #c9944a;  /* 警告: 山吹色 */
+  --error: #a84832;    /* エラー: 赤茶 */
+
+  /* ===================================
+     レガシー互換（段階的移行用）
+     =================================== */
+  --color-primary: var(--primary-500);
+  --color-secondary: var(--primary-400);
+  --color-accent: var(--accent-500);
+  --color-text: var(--text-primary);
+  --color-text-light: var(--text-secondary);
+  --color-background: var(--bg-white);
+  --color-background-light: var(--bg-subtle);
+  --color-border: var(--border-base);
+  --color-white: var(--bg-white);
+  --color-black: var(--neutral-900);
+
+  /* ===================================
+     タイポグラフィ
+     =================================== */
+  --font-family-base: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  --font-size-base: 15px;       /* 高密度化: 16px → 15px */
+  --font-size-sm: 0.867rem;     /* 13px */
+  --font-size-md: 1rem;         /* 15px */
+  --font-size-lg: 1.133rem;     /* 17px */
+  --font-size-xl: 1.2rem;       /* 18px */
+  --font-size-2xl: 1.467rem;    /* 22px */
+  --font-size-3xl: 1.867rem;    /* 28px */
+  --font-size-4xl: 2.667rem;    /* 40px */
+
+  --line-height-base: 1.7;
+  --line-height-heading: 1.3;   /* 見出しを少し詰める: 1.4 → 1.3 */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;      /* 適切な太さ: 700 → 600 */
+
+  /* ===================================
+     余白
+     =================================== */
+  --spacing-xs: 0.25rem;    /* 4px */
+  --spacing-sm: 0.5rem;     /* 8px */
+  --spacing-md: 1rem;       /* 15px */
+  --spacing-lg: 1.5rem;     /* 24px */
+  --spacing-xl: 3rem;       /* 48px */
+  --spacing-2xl: 4rem;      /* 60px */
+  --spacing-3xl: 5rem;      /* 80px */
+
+  /* ===================================
+     ブレイクポイント（メディアクエリで使用）
+     =================================== */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+
+  /* ===================================
+     コンテナ
+     =================================== */
+  --container-max-width: 1200px;
+  --container-padding: var(--spacing-md);
+
+  /* ===================================
+     ボーダー半径（角丸）
+     =================================== */
+  --radius-sm: 4px;
+  --radius-md: 6px;   /* ボタン用 */
+  --radius-lg: 8px;   /* カード用（基準） */
+  --radius-xl: 12px;  /* 大きなカード用 */
+  --radius-full: 9999px;
+
+  /* ===================================
+     トランジション
+     =================================== */
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.3s ease;
+
+  /* ===================================
+     Z-index
+     =================================== */
+  --z-dropdown: 1000;
+  --z-sticky: 1010;
+  --z-fixed: 1020;
+  --z-modal-backdrop: 1030;
+  --z-modal: 1040;
+  --z-tooltip: 1050;
+}
